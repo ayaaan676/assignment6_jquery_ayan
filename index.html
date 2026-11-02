@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayan's Portfolio - jQuery</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #222;
+            margin: 0;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        h1, h2 {
+            color: #4f46e5;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .dark {
+            background: #172033;
+            color: white;
+        }
+
+        .dark section {
+            background: #263248;
+        }
+
+        .gallery img {
+            width: 45%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        .panel {
+            display: none;
+            padding: 10px;
+            background: #eef2ff;
+            color: #222;
+        }
+
+        .accordion h3 {
+            cursor: pointer;
+            padding: 12px;
+            background: #eef2ff;
+            color: #222;
+            border-radius: 6px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .bar {
+            width: 100%;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 10px 0 20px;
+        }
+
+        .fill {
+            width: 0;
+            height: 20px;
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .gallery img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <section id="profile">
+        <h1 id="headline">Hello, I'm Ayan Sarbasov!</h1>
+        <p class="intro">
+            I am a university student learning web development.
+            I enjoy technology and creating websites.
+        </p>
+
+        <button id="changeGreeting">Change Greeting</button>
+        <button id="lightTheme">Light Theme</button>
+        <button id="darkTheme">Dark Theme</button>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am studying software engineering.</p>
+        <p id="status">Currently learning jQuery!</p>
+
+        <div id="funFacts">
+            <p>My interests: technology, programming, and learning English.</p>
+            <p>My goal is to become a good developer.</p>
+        </div>
+
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        <button id="toggle">Toggle</button>
+    </section>
+
+    <section id="gallery">
+        <h2>My Gallery</h2>
+
+        <div class="gallery">
+            <img class="galleryImage"
+                 src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
+                 alt="Computer workspace">
+
+            <img class="galleryImage"
+                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600"
+                 alt="Laptop and technology">
+        </div>
+
+        <button id="fadeIn">Fade In</button>
+        <button id="fadeOut">Fade Out</button>
+        <button id="fadeToggle">Fade Toggle</button>
+    </section>
+
+    <section>
+        <h2>My Favorites</h2>
+
+        <div class="accordion">
+            <h3>My Favorite Music</h3>
+            <div class="panel">
+                <p>I enjoy listening to music in my free time.</p>
+            </div>
+
+            <h3>My Favorite Movie</h3>
+            <div class="panel">
+                <p>I like movies with interesting stories.</p>
+            </div>
+
+            <h3>My Favorite Subject</h3>
+            <div class="panel">
+                <p>My favorite subject is web development.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Technical Skills</h2>
+
+        <ul id="skillsList">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+        <input type="text" id="skillInput" placeholder="Enter a skill">
+
+        <button id="addSkill">Add Skill</button>
+        <button id="prependSkill">Prepend Skill</button>
+        <button id="removeSkill">Remove Skill</button>
+    </section>
+
+    <section>
+        <h2>My GitHub</h2>
+
+        <a id="socialLink" href="https://github.com/ayaaan676" target="_blank">
+            github.com/ayaaan676
+        </a>
+
+        <br><br>
+        <button id="changeLink">Change Link</button>
+    </section>
+
+    <section>
+        <h2>Contact Form</h2>
+
+        <form id="contactForm">
+            <input type="text" id="nameInput" placeholder="Your Name">
+            <input type="email" id="emailInput" placeholder="Your Email">
+        </form>
+
+        <p id="output">Your information will appear here.</p>
+    </section>
+
+    <section>
+        <h2>My Skill Progress</h2>
+
+        <p>HTML & CSS — 85%</p>
+        <div class="bar">
+            <div class="fill" data-width="85%"></div>
+        </div>
+
+        <p>JavaScript — 65%</p>
+        <div class="bar">
+            <div class="fill" data-width="65%"></div>
+        </div>
+
+        <p>jQuery — 50%</p>
+        <div class="bar">
+            <div class="fill" data-width="50%"></div>
+        </div>
+
+        <button id="animateSkills">Animate My Skills</button>
+    </section>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    // Task 0: Setup
+    console.log("jQuery is ready!");
+
+    // Task 1: Selectors and CSS
+    $("h1").css("letter-spacing", "1px");
+    $(".intro").css("font-size", "18px");
+
+    $("#changeGreeting").click(function() {
+        $("#headline").text("Welcome to My Portfolio!");
+        $("#headline").css("color", "green");
+    });
+
+    $("#lightTheme").click(function() {
+        $("body").removeClass("dark");
+    });
+
+    $("#darkTheme").click(function() {
+        $("body").addClass("dark");
+    });
+
+    // Task 2: Visibility Methods
+    $("#hide").click(function() {
+        $("#status, #funFacts").hide();
+    });
+
+    $("#show").click(function() {
+        $("#status, #funFacts").show();
+    });
+
+    $("#toggle").click(function() {
+        $("#status, #funFacts").toggle();
+    });
+
+    // Task 3: Fade Methods
+    $("#fadeIn").click(function() {
+        $(".galleryImage").fadeIn(500);
+    });
+
+    $("#fadeOut").click(function() {
+        $(".galleryImage").fadeOut(500);
+    });
+
+    $("#fadeToggle").click(function() {
+        $(".galleryImage").fadeToggle(500);
+    });
+
+    // Task 4: Slide Methods
+    $(".accordion h3").click(function() {
+        let panel = $(this).next(".panel");
+
+        if (panel.is(":visible")) {
+            panel.slideUp(300);
+        } else {
+            panel.slideDown(300);
+        }
+    });
+
+    // Task 5: Add and Remove Elements
+    $("#addSkill").click(function() {
+        let skill = $("#skillInput").val().trim();
+
+        if (skill === "") {
+            alert("Please enter a skill!");
+            return;
+        }
+
+        $("#skillsList").append($("<li>").text(skill));
+        $("#skillInput").val("");
+    });
+
+    $("#prependSkill").click(function() {
+        let skill = $("#skillInput").val().trim();
+
+        if (skill === "") {
+            alert("Please enter a skill!");
+            return;
+        }
+
+        $("#skillsList").prepend($("<li>").text(skill));
+        $("#skillInput").val("");
+    });
+
+    $("#removeSkill").click(function() {
+        $("#skillsList li:last").remove();
+    });
+
+    // Task 6: Modifying Attributes
+    let changed = false;
+
+    $("#changeLink").click(function() {
+        if (!changed) {
+            $("#socialLink")
+                .attr("href", "https://www.linkedin.com/")
+                .text("LinkedIn");
+        } else {
+            $("#socialLink")
+                .attr("href", "https://github.com/ayaaan676")
+                .text("GitHub");
+        }
+
+        changed = !changed;
+    });
+
+    // Task 7: Form Interaction
+    $("#nameInput, #emailInput").on("input", function() {
+        let name = $("#nameInput").val();
+        let email = $("#emailInput").val();
+
+        $("#output").text(
+            "Name: " + name + " | Email: " + email
+        );
+    });
+
+    // Task 8: Basic Animation
+    let animated = false;
+
+    $("#animateSkills").click(function() {
+        $(".fill").each(function() {
+            let targetWidth = $(this).attr("data-width");
+
+            $(this).stop().animate({
+                width: animated ? "0%" : targetWidth
+            }, 1000);
+        });
+
+        animated = !animated;
+    });
+
+});
+</script>
+
+</body>
+</html>
